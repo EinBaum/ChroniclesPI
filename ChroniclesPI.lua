@@ -4,6 +4,24 @@ local function print(text)
 	DEFAULT_CHAT_FRAME:AddMessage("[PI] " .. text, 1, 0.3, 0.5)
 end
 
+local buffed_frame = CreateFrame("GameTooltip", "CPI_GameTooltip", nil, "GameTooltipTemplate")
+buffed_frame:SetOwner(WorldFrame, "ANCHOR_NONE")
+buffed_frame:Hide()
+local buffed_name = getglobal(buffed_frame:GetName().."TextLeft1")
+
+local function buffed(searchBuff, unit)
+	for i = 1, 32 do
+		buffed_frame:SetOwner(UIParent, "ANCHOR_NONE")
+		buffed_frame:SetUnitBuff(unit, i)
+		if buffed_name:GetText() == searchBuff then
+			return true
+		end
+	end
+	return false
+end
+
+local buffsThatDontStack = {"Arcane Power", "Unstable Power"}
+
 local function cast(name)
 
 	if not name or name == "" then
@@ -11,7 +29,7 @@ local function cast(name)
 	end
 
 	if not name then
-		print("Noone has requested PI.")
+		print("Noone has requested Power Infusion.")
 		return
 	end
 
@@ -46,7 +64,14 @@ local function cast(name)
 	TargetByName(name, true)
 
 	if UnitName("target") == name then
-		if buffed("Arcane Power", "target") or buffed("Power Infusion", "target") then
+		local alreadyBuffed = false
+		for _, testBuff in buffsThatDontStack do
+			if buffed(testBuff, "target") then
+				alreadyBuffed = true
+			end
+		end
+
+		if alreadyBuffed then
 			print("ANOTHER EMPOWERMENT IS UP!")
 		else
 			CastSpellByName(spellName)

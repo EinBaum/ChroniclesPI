@@ -16,4 +16,6 @@ The /pi command can be used in macros.
 
 ## Download
 
-[Releases](https://github.com/EinBaum/ChroniclesPI/releases)
+Click on 'ChroniclesPI.zip' on this page:
+
+[Download](https://github.com/EinBaum/ChroniclesPI/releases)
