@@ -1,0 +1,9 @@
+## Interface: 11200
+## Title: Chronicles|cff60ff00PI|r
+## Notes: Cast Power Infusion with '/pi' or '/pi Name'
+## Author: EinBaum https://github.com/EinBaum
+## Version: 1.0.0
+## SavedVariables:
+## OptionalDeps:
+
+ChroniclesPI.lua
