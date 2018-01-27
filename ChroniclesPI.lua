@@ -4,6 +4,10 @@ local function print(text)
 	DEFAULT_CHAT_FRAME:AddMessage("[PI] " .. text, 1, 0.3, 0.5)
 end
 
+local function formatname(name)
+	return string.gsub(string.lower(name), "^%l", string.upper)
+end
+
 local buffed_frame = CreateFrame("GameTooltip", "CPI_GameTooltip", nil, "GameTooltipTemplate")
 buffed_frame:SetOwner(WorldFrame, "ANCHOR_NONE")
 buffed_frame:Hide()
@@ -32,6 +36,8 @@ local function cast(name)
 		print("Noone has requested Power Infusion.")
 		return
 	end
+
+	name = formatname(name)
 
 	local spellName = "Power Infusion"
 	local spellID = nil
