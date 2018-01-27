@@ -57,7 +57,8 @@ local function cast(name)
 	end
 
 	local retarget = false
-	if UnitExists("target") then
+
+	if UnitExists("target") and UnitName("target") ~= name then
 		retarget = true
 	end
 
