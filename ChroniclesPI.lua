@@ -92,6 +92,16 @@ local function cast(name)
 	end
 end
 
+local function setpi(name)
+	if not name or name == "" then
+		print("Usage: /setpi Name")
+		return
+	end
+
+	savedName = formatname(name)
+	print("New PI target: " .. savedName)
+end
+
 local frame = CreateFrame("frame")
 frame:RegisterEvent("CHAT_MSG_WHISPER")
 frame:SetScript("OnEvent", function()
@@ -109,3 +119,6 @@ end)
 
 SLASH_CPI1 = "/pi"
 SlashCmdList["CPI"] = cast
+
+SLASH_CSETPI1 = "/setpi"
+SlashCmdList["CSETPI"] = setpi

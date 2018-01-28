@@ -6,13 +6,15 @@ Command to cast PI on the last person that whispered "POWER INFUSION" (in caps) 
 
 	/pi
 
-
 Command to cast PI on a specific player:
 
 	/pi Name
 
+Manually set /pi target:
 
-The /pi command can be used in macros.
+	/setpi Name
+
+These commands can be used in macros.
 
 ## Download
 
