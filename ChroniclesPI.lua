@@ -1,5 +1,3 @@
-﻿local savedName = nil
-
 local function print(text)
 	DEFAULT_CHAT_FRAME:AddMessage("[PI] " .. text, 1, 0.3, 0.5)
 end
@@ -29,7 +27,7 @@ local buffsThatDontStack = {"Arcane Power", "Unstable Power"}
 local function cast(name)
 
 	if not name or name == "" then
-		name = savedName
+		name = CPI_Name
 	end
 
 	if not name then
@@ -98,8 +96,8 @@ local function setpi(name)
 		return
 	end
 
-	savedName = formatname(name)
-	print("New PI target: " .. savedName)
+	CPI_Name = formatname(name)
+	print("New PI target: " .. CPI_Name)
 end
 
 local frame = CreateFrame("frame")
@@ -109,9 +107,9 @@ frame:SetScript("OnEvent", function()
 	local name = arg2
 	if text and name then
 		if strfind(text, "POWER INFUSION") then
-			if savedName ~= name then
+			if CPI_Name ~= name then
 				print("New PI target: " .. name)
-				savedName = name
+				CPI_Name = name
 			end
 		end
 	end

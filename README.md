@@ -10,7 +10,7 @@ Command to cast PI on a specific player:
 
 	/pi Name
 
-Manually set /pi target:
+Manually set target for the /pi command:
 
 	/setpi Name
 
