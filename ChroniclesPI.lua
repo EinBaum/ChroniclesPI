@@ -22,7 +22,7 @@ local function buffed(searchBuff, unit)
 	return false
 end
 
-local buffsThatDontStack = {"Arcane Power", "Unstable Power"}
+local buffsThatDontStack = {"Arcane Power"}
 
 local function cast(name)
 
@@ -79,6 +79,7 @@ local function cast(name)
 		if alreadyBuffed then
 			print("ANOTHER EMPOWERMENT IS UP!")
 		else
+			print("Casting PI on " .. name .. "!")
 			CastSpellByName(spellName)
 		end
 
