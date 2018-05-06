@@ -62,25 +62,28 @@ local function cast(name)
 
 	local retarget = false
 
-	if UnitExists("target") and UnitName("target") ~= name then
+	if UnitName("target") ~= name then
 		retarget = true
+		TargetByName(name, true)
 	end
 
-	TargetByName(name, true)
-
 	if UnitName("target") == name then
-		local alreadyBuffed = false
-		for _, testBuff in buffsThatDontStack do
-			if buffed(testBuff, "target") then
-				alreadyBuffed = true
+		if not UnitIsDeadOrGhost("target") then
+			local alreadyBuffed = false
+			for _, testBuff in buffsThatDontStack do
+				if buffed(testBuff, "target") then
+					alreadyBuffed = true
+				end
 			end
-		end
 
-		if alreadyBuffed then
-			print("ANOTHER EMPOWERMENT IS UP!")
+			if alreadyBuffed then
+				print("ANOTHER EMPOWERMENT IS UP!")
+			else
+				print("Casting PI on " .. name .. "!")
+				CastSpellByName(spellName)
+			end
 		else
-			print("Casting PI on " .. name .. "!")
-			CastSpellByName(spellName)
+			print("Target is dead.")
 		end
 
 		if retarget then
